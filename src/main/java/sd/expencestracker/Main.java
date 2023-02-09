@@ -1,6 +1,6 @@
-package sd.expencesbook;
+package sd.expencestracker;
 
-import sd.expencesbook.services.Application;
+import sd.expencestracker.services.Application;
 
 public class Main {
     public static void main(String[] args) {

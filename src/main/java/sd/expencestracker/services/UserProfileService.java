@@ -1,4 +1,4 @@
-package sd.expencesbook.services;
+package sd.expencestracker.services;
 
 public class UserProfileService {
 
