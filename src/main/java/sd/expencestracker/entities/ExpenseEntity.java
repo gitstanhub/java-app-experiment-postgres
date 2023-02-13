@@ -1,12 +1,12 @@
 package sd.expencestracker.entities;
 
-public class ExpencesEntity {
+public class ExpenseEntity {
     private int id;
     private int accountId;
     private int spending;
     private String spendingCategory;
 
-    public ExpencesEntity(int id, int accountId, int spending, String spendingCategory) {
+    public ExpenseEntity(int id, int accountId, int spending, String spendingCategory) {
         this.id = id;
         this.accountId = accountId;
         this.spending = spending;
@@ -25,7 +25,7 @@ public class ExpencesEntity {
         return accountId;
     }
 
-    public void setAccountId() {
+    public void setAccountId(int accountId) {
         this.accountId = accountId;
     }
 
