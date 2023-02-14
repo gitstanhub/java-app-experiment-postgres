@@ -1,37 +1,34 @@
-package sd.expencestracker.entities;
+package sd.expensestracker.entities;
 
 public class AccountEntity {
     private int id;
     private String name;
     private int balance;
 
-    public AccountEntity (int id, String name, int balance) {
-        this.id = id;
-        this.name = name;
-        this.balance = balance;
-    }
-
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public AccountEntity setId(int id) {
         this.id = id;
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public AccountEntity setName(String name) {
         this.name = name;
+        return this;
     }
 
     public int getBalance() {
         return balance;
     }
 
-    public void setBalance(int balance) {
+    public AccountEntity setBalance(int balance) {
         this.balance = balance;
+        return this;
     }
 }

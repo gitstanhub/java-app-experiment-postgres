@@ -1,4 +1,4 @@
-package sd.expencestracker.db;
+package sd.expensestracker.db;
 
 import org.postgresql.ds.PGSimpleDataSource;
 

@@ -1,6 +1,4 @@
-package sd.expencestracker.services;
-
-import java.sql.Connection;
+package sd.expensestracker.services;
 
 public class AccountService {
 

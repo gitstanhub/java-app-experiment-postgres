@@ -1,6 +1,6 @@
-package sd.expencestracker.db;
+package sd.expensestracker.db;
 
-import sd.expencestracker.entities.AccountEntity;
+import sd.expensestracker.entities.AccountEntity;
 
 import java.util.List;
 
