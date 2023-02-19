@@ -5,8 +5,6 @@ import org.postgresql.ds.PGSimpleDataSource;
 public class DataSourceProvider {
 
     private static PGSimpleDataSource dataSource = null;
-
-//    public static final String DB_URL = "jdbc:postgresql://localhost:5432/simple-java-app-postgres-server";
     public static final String USER = "postgres";
     public static final String PASS = "secret";
 
