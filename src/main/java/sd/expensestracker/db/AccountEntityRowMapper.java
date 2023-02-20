@@ -10,9 +10,11 @@ public class AccountEntityRowMapper implements RowMapper<AccountEntity> {
 
     @Override
     public AccountEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
-        return new AccountEntity()
-                .setId(rs.getInt("id"))
-                .setName(rs.getString("name"))
-                .setBalance(rs.getInt("balance"));
+
+        AccountEntity account = new AccountEntity();
+        account.setId(rs.getInt("id"));
+        account.setName(rs.getString("name"));
+        account.setBalance(rs.getInt("balance"));
+        return account;
     }
 }

@@ -15,7 +15,8 @@ public class AccountService {
         AccountEntity currentAccount = accountRepository.getByName(accountName);
 
         if (currentAccount == null) {
-            int balance = Integer.parseInt(JOptionPane.showInputDialog("Please enter your account balance:"));
+            int balance = Integer.parseInt(JOptionPane.showInputDialog("It looks like you don't have an account yet." +
+                    "Please enter the balance of your new account:"));
 
             AccountEntity account = new AccountEntity().setName(accountName).setBalance(balance);
             accountRepository.addAccount(account);
@@ -25,8 +26,8 @@ public class AccountService {
         }
     }
 
-    public void showCurrentBalance(AccountEntity entity) {
-        JOptionPane.showMessageDialog(null, "Your balance is:" + entity.getBalance(),
+    public void showCurrentBalance(AccountEntity account) {
+        JOptionPane.showMessageDialog(null, "Your balance is:" + account.getBalance(),
                 "Balance", JOptionPane.INFORMATION_MESSAGE);
     }
 

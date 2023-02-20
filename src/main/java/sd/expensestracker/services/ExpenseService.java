@@ -9,11 +9,11 @@ public class ExpenseService {
 
     private ExpenseRepository expenseRepository = new PostgresExpenseRepository();
 
-    public ExpenseEntity sendExpense(AccountEntity entity) {
+    public ExpenseEntity sendExpense(AccountEntity account) {
         return null;
     }
 
-    public void showAllExpences(AccountEntity entity) {
+    public void showAllExpences(AccountEntity account) {
 
     }
 }

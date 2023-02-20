@@ -6,12 +6,7 @@ public class ExpenseEntity {
     private int spending;
     private String spendingCategory;
 
-    public ExpenseEntity(int id, int accountId, int spending, String spendingCategory) {
-        this.id = id;
-        this.accountId = accountId;
-        this.spending = spending;
-        this.spendingCategory = spendingCategory;
-    }
+    private String spendingDescription;
 
     public int getId() {
         return id;
@@ -43,5 +38,13 @@ public class ExpenseEntity {
 
     public void setSpendingCategory(String spendingCategory) {
         this.spendingCategory = spendingCategory;
+    }
+
+    public String getSpendingDescription() {
+        return spendingDescription;
+    }
+
+    public void setSpendingDescription(String spendingDescription) {
+        this.spendingDescription = spendingDescription;
     }
 }
