@@ -1,11 +1,11 @@
-package sd.expensestracker.db.implementation;
+package sd.expensestracker.db.repositories.implementations;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import sd.expensestracker.db.DataSourceProvider;
-import sd.expensestracker.db.ExpenseEntityRowMapper;
-import sd.expensestracker.db.ExpenseRepository;
-import sd.expensestracker.entities.AccountEntity;
-import sd.expensestracker.entities.ExpenseEntity;
+import sd.expensestracker.db.entities.ExpenseEntityRowMapper;
+import sd.expensestracker.db.repositories.ExpenseRepository;
+import sd.expensestracker.db.entities.AccountEntity;
+import sd.expensestracker.db.entities.ExpenseEntity;
 
 import java.util.List;
 
@@ -15,7 +15,8 @@ public class PostgresExpenseRepository implements ExpenseRepository {
 
     @Override
     public List<ExpenseEntity> getAllByAccount(AccountEntity account) {
-        return template.query("SELECT * FROM expense", new ExpenseEntityRowMapper());
+        return template.query("SELECT * FROM expense where account_id = ?", new ExpenseEntityRowMapper(),
+                account.getId());
     }
 
     @Override

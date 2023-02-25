@@ -1,8 +1,8 @@
 package sd.expensestracker.services;
 
-import sd.expensestracker.db.AccountRepository;
-import sd.expensestracker.db.implementation.PostgresAccountRepository;
-import sd.expensestracker.entities.AccountEntity;
+import sd.expensestracker.db.repositories.AccountRepository;
+import sd.expensestracker.db.repositories.implementations.PostgresAccountRepository;
+import sd.expensestracker.db.entities.AccountEntity;
 
 import javax.swing.*;
 

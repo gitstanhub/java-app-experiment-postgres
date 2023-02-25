@@ -1,7 +1,6 @@
-package sd.expensestracker.db;
+package sd.expensestracker.db.entities;
 
 import org.springframework.jdbc.core.RowMapper;
-import sd.expensestracker.entities.AccountEntity;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

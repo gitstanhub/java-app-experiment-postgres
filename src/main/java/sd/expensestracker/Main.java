@@ -1,7 +1,5 @@
 package sd.expensestracker;
 
-import sd.expensestracker.services.Application;
-
 public class Main {
 
 

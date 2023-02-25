@@ -1,9 +1,9 @@
 package sd.expensestracker.services;
 
-import sd.expensestracker.db.ExpenseRepository;
-import sd.expensestracker.db.implementation.PostgresExpenseRepository;
-import sd.expensestracker.entities.AccountEntity;
-import sd.expensestracker.entities.ExpenseEntity;
+import sd.expensestracker.db.repositories.ExpenseRepository;
+import sd.expensestracker.db.repositories.implementations.PostgresExpenseRepository;
+import sd.expensestracker.db.entities.AccountEntity;
+import sd.expensestracker.db.entities.ExpenseEntity;
 
 public class ExpenseService {
 

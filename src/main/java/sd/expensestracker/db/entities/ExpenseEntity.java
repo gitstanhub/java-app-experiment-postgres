@@ -1,11 +1,10 @@
-package sd.expensestracker.entities;
+package sd.expensestracker.db.entities;
 
 public class ExpenseEntity {
     private int id;
     private int accountId;
     private int spending;
     private String spendingCategory;
-
     private String spendingDescription;
 
     public int getId() {
