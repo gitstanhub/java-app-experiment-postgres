@@ -1,4 +1,4 @@
-package sd.expensestracker.entities;
+package sd.expensestracker.db.entities;
 
 public class AccountEntity {
     private int id;

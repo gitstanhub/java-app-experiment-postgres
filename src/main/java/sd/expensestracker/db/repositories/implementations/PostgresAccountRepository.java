@@ -1,11 +1,11 @@
-package sd.expensestracker.db.implementation;
+package sd.expensestracker.db.repositories.implementations;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.lang.Nullable;
-import sd.expensestracker.db.AccountEntityRowMapper;
-import sd.expensestracker.db.AccountRepository;
+import sd.expensestracker.db.entities.AccountEntityRowMapper;
+import sd.expensestracker.db.repositories.AccountRepository;
 import sd.expensestracker.db.DataSourceProvider;
-import sd.expensestracker.entities.AccountEntity;
+import sd.expensestracker.db.entities.AccountEntity;
 
 import java.util.List;
 

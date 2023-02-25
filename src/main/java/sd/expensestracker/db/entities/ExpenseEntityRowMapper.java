@@ -1,7 +1,6 @@
-package sd.expensestracker.db;
+package sd.expensestracker.db.entities;
 
 import org.springframework.jdbc.core.RowMapper;
-import sd.expensestracker.entities.ExpenseEntity;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,5 +19,4 @@ public class ExpenseEntityRowMapper implements RowMapper<ExpenseEntity> {
 
         return expense;
     }
-
 }

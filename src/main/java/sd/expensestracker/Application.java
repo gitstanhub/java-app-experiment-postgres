@@ -1,6 +1,7 @@
-package sd.expensestracker.services;
+package sd.expensestracker;
 
-import sd.expensestracker.entities.AccountEntity;
+import sd.expensestracker.db.entities.AccountEntity;
+import sd.expensestracker.services.AccountService;
 
 public class Application {
 
