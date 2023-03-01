@@ -13,9 +13,9 @@ public class ExpenseEntityRowMapper implements RowMapper<ExpenseEntity> {
         ExpenseEntity expense = new ExpenseEntity();
         expense.setId(rs.getInt("id"));
         expense.setAccountId((rs.getInt("account_id")));
-        expense.setSpending(rs.getInt("spending"));
-        expense.setSpendingCategory(rs.getString("spending_category"));
-        expense.setSpendingDescription(rs.getString("spending_description"));
+        expense.setSpending(rs.getInt("expense_amount"));
+        expense.setSpendingCategory(rs.getString("expense_category"));
+        expense.setSpendingDescription(rs.getString("expense_description"));
 
         return expense;
     }
