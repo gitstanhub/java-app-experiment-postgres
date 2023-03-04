@@ -13,7 +13,7 @@ public class DataSourceProvider {
             dataSource = new PGSimpleDataSource();
             dataSource.setServerNames(new String[] {"localhost"});
             dataSource.setPortNumbers(new int[] {5432});
-            dataSource.setDatabaseName("simple_java_app_postgres_db");
+            dataSource.setDatabaseName("expenses_tracker_postgres_db");
             dataSource.setUser(USER);
             dataSource.setPassword(PASS);
         }
