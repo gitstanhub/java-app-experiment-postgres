@@ -8,14 +8,14 @@ import javax.swing.*;
 
 public class AccountService {
 
-    private AccountRepository accountRepository = new PostgresAccountRepository();
+    private final AccountRepository accountRepository = new PostgresAccountRepository();
 
     public AccountEntity login() {
         String accountName = JOptionPane.showInputDialog("Please enter your account name:");
         AccountEntity currentAccount = accountRepository.getByName(accountName);
 
         if (currentAccount == null) {
-            int balance = Integer.parseInt(JOptionPane.showInputDialog("It looks like you don't have an account yet." +
+            int balance = Integer.parseInt(JOptionPane.showInputDialog("It looks like you don't have an account yet." + '\n' +
                     "Please enter the balance of your new account:"));
 
             AccountEntity account = new AccountEntity().setName(accountName).setBalance(balance);
@@ -27,7 +27,7 @@ public class AccountService {
     }
 
     public void showCurrentBalance(AccountEntity account) {
-        JOptionPane.showMessageDialog(null, "Your balance is:" + account.getBalance(),
+        JOptionPane.showMessageDialog(null, "Your balance is: " + account.getBalance(),
                 "Balance", JOptionPane.INFORMATION_MESSAGE);
     }
 

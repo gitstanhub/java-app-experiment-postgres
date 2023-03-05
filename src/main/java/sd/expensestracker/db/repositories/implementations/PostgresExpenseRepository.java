@@ -11,12 +11,13 @@ import java.util.List;
 
 public class PostgresExpenseRepository implements ExpenseRepository {
 
-    public JdbcTemplate template = new JdbcTemplate(DataSourceProvider.getDataSource());
+    private final JdbcTemplate template = new JdbcTemplate(DataSourceProvider.getDataSource());
+
+    ExpenseEntityRowMapper expenseEntityRowMapper = new ExpenseEntityRowMapper();
 
     @Override
     public List<ExpenseEntity> getAllByAccount(AccountEntity account) {
-        return template.query("SELECT * FROM expense where account_id = ?", new ExpenseEntityRowMapper(),
-                account.getId());
+        return template.query("SELECT * FROM expense where account_id = ?", expenseEntityRowMapper, account.getId());
     }
 
     @Override
