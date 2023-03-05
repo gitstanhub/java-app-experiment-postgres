@@ -1,5 +1,6 @@
 package sd.expensestracker.db.repositories.implementations;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.lang.Nullable;
 import sd.expensestracker.db.entities.AccountEntityRowMapper;
@@ -11,20 +12,32 @@ import java.util.List;
 
 public class PostgresAccountRepository implements AccountRepository {
 
-    private static final JdbcTemplate template = new JdbcTemplate(DataSourceProvider.getDataSource());
+    private final JdbcTemplate template = new JdbcTemplate(DataSourceProvider.getDataSource());
+
+    AccountEntityRowMapper accountEntityRowMapper = new AccountEntityRowMapper();
 
     @Override
     public List<AccountEntity> getAll() {
-        return template.query("SELECT * FROM account", new AccountEntityRowMapper());
+        return template.query("SELECT * FROM account", accountEntityRowMapper);
     }
 
+    @Nullable
     @Override
-    public @Nullable AccountEntity getByName(String accountName) {
-        return template.queryForObject("SELECT * FROM account WHERE name = ?", new AccountEntityRowMapper(), accountName);
+    public AccountEntity getByName(String accountName) {
+        try {
+            return template.queryForObject("SELECT * FROM account WHERE name = ?", accountEntityRowMapper, accountName);
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
 
     @Override
     public void addAccount(AccountEntity account) {
         template.update("INSERT INTO account (name, balance) values (?, ?)", account.getName(), account.getBalance());
+    }
+
+    @Override
+    public void updateAccountBalance(AccountEntity account) {
+        template.update("UPDATE account SET balance = ? WHERE id = ?", account.getBalance(), account.getId());
     }
 }
