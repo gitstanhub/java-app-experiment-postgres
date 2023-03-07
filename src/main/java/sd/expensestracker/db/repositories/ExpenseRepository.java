@@ -9,5 +9,5 @@ public interface ExpenseRepository {
 
     List<ExpenseEntity> getAllByAccount(AccountEntity account);
 
-    void addExpense (AccountEntity account);
+    void addExpense (ExpenseEntity expense);
 }
