@@ -1,11 +1,13 @@
 package sd.expensestracker.db.entities;
 
+import sd.expensestracker.data.Category;
+
 public class ExpenseEntity {
     private int id;
     private int accountId;
-    private int spending;
-    private String spendingCategory;
-    private String spendingDescription;
+    private int expenseAmount;
+    private Category expenseCategory;
+    private String expenseDescription;
 
     public int getId() {
         return id;
@@ -19,31 +21,35 @@ public class ExpenseEntity {
         return accountId;
     }
 
-    public void setAccountId(int accountId) {
+    public ExpenseEntity setAccountId(int accountId) {
         this.accountId = accountId;
+        return this;
     }
 
-    public int getSpending() {
-        return spending;
+    public int getExpenseAmount() {
+        return expenseAmount;
     }
 
-    public void setSpending(int spending) {
-        this.spending = spending;
+    public ExpenseEntity setExpenseAmount(int expenseAmount) {
+        this.expenseAmount = expenseAmount;
+        return this;
     }
 
-    public String getSpendingCategory() {
-        return spendingCategory;
+    public Category getExpenseCategory() {
+        return expenseCategory;
     }
 
-    public void setSpendingCategory(String spendingCategory) {
-        this.spendingCategory = spendingCategory;
+    public ExpenseEntity setExpenseCategory(Category expenseCategory) {
+        this.expenseCategory = expenseCategory;
+        return this;
     }
 
-    public String getSpendingDescription() {
-        return spendingDescription;
+    public String getExpenseDescription() {
+        return expenseDescription;
     }
 
-    public void setSpendingDescription(String spendingDescription) {
-        this.spendingDescription = spendingDescription;
+    public ExpenseEntity setExpenseDescription(String expenseDescription) {
+        this.expenseDescription = expenseDescription;
+        return this;
     }
 }
