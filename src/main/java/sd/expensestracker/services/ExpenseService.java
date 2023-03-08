@@ -16,13 +16,24 @@ public class ExpenseService {
     private AccountRepository accountRepository = new PostgresAccountRepository();
     private ExpenseRepository expenseRepository = new PostgresExpenseRepository();
 
+    private boolean expenseIsValid(AccountEntity currentAccount, int expense) {
+        if (expense <= 0) {
+            return false;
+        } else if (currentAccount.getBalance() < expense) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     public void submitExpense(AccountEntity account) {
         int indexOfCategory = JOptionPane.showOptionDialog(
-                null, "Category", "Please choose category of the expense", JOptionPane.DEFAULT_OPTION,
+                null, "Please choose category of the expense","Category", JOptionPane.DEFAULT_OPTION,
                 JOptionPane.PLAIN_MESSAGE,
                 null,
                 Arrays.stream(Category.values()).map(Category::getCategoryDescription).toArray(String[]::new),
-                Category.findCategory("Groceries").toString()
+//                Category.findCategory("Groceries").toString()
+                Category.GROCERIES
         );
 
         Category selectedCategory = Category.values()[indexOfCategory];
@@ -37,21 +48,23 @@ public class ExpenseService {
                     .setAccountId(account.getId());
 
             expenseRepository.addExpense(expense);
+            account.setBalance(account.getBalance() - expenseAmount);
+            accountRepository.updateAccountBalance(account);
+        } else {
+            JOptionPane.showMessageDialog(null, "Not enough funds on the balance or the expense value is invalid",
+                    "Can't submit the expense", JOptionPane.ERROR_MESSAGE);
         }
-        }
-
-    private boolean expenseIsValid(AccountEntity currentAccount, int spend) {
-        if (spend <= 0) {
-            return false;
-        }
-        else if (currentAccount.getBalance() < spend) {
-            return false;
-        }
-        else return true;
-
     }
 
-    public void showAllExpences(AccountEntity account) {
+    public void showResultsTable(AccountEntity account) {
+        Object[][] resultsTableRows = expenseRepository.getAllByAccount(account)
+                .stream()
+                .map(expense -> new Object[]{expense.getExpenseAmount(), Category.findCategory(expense.getExpenseDescription()), expense.getExpenseDescription()})
+                .toArray(Object[][]::new);
 
+        Object[] resultsTableColumns = {"Expense Amount", "Expense Category", "Expense Description"};
+
+        JTable resultsTable = new JTable(resultsTableRows, resultsTableColumns);
+        JOptionPane.showMessageDialog(null, new JScrollPane(resultsTable));
     }
 }
