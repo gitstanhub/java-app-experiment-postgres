@@ -21,7 +21,12 @@ public class PostgresExpenseRepository implements ExpenseRepository {
     }
 
     @Override
-    public void addExpense(AccountEntity account) {
-
+    public void addExpense(ExpenseEntity expense) {
+        template.update("INSERT INTO expense (account_id, expense_category, expense_amount, expense_description) values (?, ?, ?, ?)",
+                expense.getAccountId(),
+                expense.getExpenseCategory().getCategoryDescription(),
+                expense.getExpenseAmount(),
+                expense.getExpenseDescription()
+        );
     }
 }
