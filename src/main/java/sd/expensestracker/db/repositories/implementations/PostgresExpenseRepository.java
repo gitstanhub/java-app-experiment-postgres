@@ -24,7 +24,7 @@ public class PostgresExpenseRepository implements ExpenseRepository {
     public void addExpense(ExpenseEntity expense) {
         template.update("INSERT INTO expense (account_id, expense_category, expense_amount, expense_description) values (?, ?, ?, ?)",
                 expense.getAccountId(),
-                expense.getExpenseCategory().getCategoryDescription(),
+                expense.getExpenseCategory().toString(),
                 expense.getExpenseAmount(),
                 expense.getExpenseDescription()
         );

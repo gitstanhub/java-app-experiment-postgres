@@ -28,12 +28,14 @@ public class ExpenseService {
 
     public void submitExpense(AccountEntity account) {
         int indexOfCategory = JOptionPane.showOptionDialog(
-                null, "Please choose category of the expense","Category", JOptionPane.DEFAULT_OPTION,
+                null,
+                "Please choose category of the expense",
+                "Category",
+                JOptionPane.DEFAULT_OPTION,
                 JOptionPane.PLAIN_MESSAGE,
                 null,
                 Arrays.stream(Category.values()).map(Category::getCategoryDescription).toArray(String[]::new),
-//                Category.findCategory("Groceries").toString()
-                Category.GROCERIES
+                Category.GROCERIES.getCategoryDescription()
         );
 
         Category selectedCategory = Category.values()[indexOfCategory];
@@ -59,7 +61,7 @@ public class ExpenseService {
     public void showResultsTable(AccountEntity account) {
         Object[][] resultsTableRows = expenseRepository.getAllByAccount(account)
                 .stream()
-                .map(expense -> new Object[]{expense.getExpenseAmount(), Category.findCategory(expense.getExpenseDescription()), expense.getExpenseDescription()})
+                .map(expense -> new Object[]{expense.getExpenseAmount(), expense.getExpenseCategory().getCategoryDescription(), expense.getExpenseDescription()})
                 .toArray(Object[][]::new);
 
         Object[] resultsTableColumns = {"Expense Amount", "Expense Category", "Expense Description"};
