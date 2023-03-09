@@ -1,21 +1,22 @@
 package sd.expensestracker.services;
 
-import sd.expensestracker.db.AccountRepository;
-import sd.expensestracker.db.implementation.PostgresAccountRepository;
-import sd.expensestracker.entities.AccountEntity;
+import sd.expensestracker.db.repositories.AccountRepository;
+import sd.expensestracker.db.repositories.implementations.PostgresAccountRepository;
+import sd.expensestracker.db.entities.AccountEntity;
 
 import javax.swing.*;
 
 public class AccountService {
 
-    private AccountRepository accountRepository = new PostgresAccountRepository();
+    private final AccountRepository accountRepository = new PostgresAccountRepository();
 
     public AccountEntity login() {
         String accountName = JOptionPane.showInputDialog("Please enter your account name:");
         AccountEntity currentAccount = accountRepository.getByName(accountName);
 
         if (currentAccount == null) {
-            int balance = Integer.parseInt(JOptionPane.showInputDialog("Please enter your account balance:"));
+            int balance = Integer.parseInt(JOptionPane.showInputDialog("It looks like you don't have an account yet." + '\n' +
+                    "Please enter the balance of your new account:"));
 
             AccountEntity account = new AccountEntity().setName(accountName).setBalance(balance);
             accountRepository.addAccount(account);
@@ -25,8 +26,8 @@ public class AccountService {
         }
     }
 
-    public void showCurrentBalance(AccountEntity entity) {
-        JOptionPane.showMessageDialog(null, "Your balance is:" + entity.getBalance(),
+    public void showCurrentBalance(AccountEntity account) {
+        JOptionPane.showMessageDialog(null, "Your balance is: " + account.getBalance(),
                 "Balance", JOptionPane.INFORMATION_MESSAGE);
     }
 
